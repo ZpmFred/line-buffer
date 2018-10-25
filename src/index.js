@@ -23,7 +23,7 @@ exports.LineBuffer = class extends EventEmitter {
   feed(chunk) {
     this._buffer += (chunk || '').toString('binary');
 
-    let lines = this._buffer.split(/\r?\n/);
+    let lines = this._buffer.split(/\r?\n|\r/);
     if (lines.length > 1) {
       this._buffer = lines.pop(); // chunk for the next round
 
